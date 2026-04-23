@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPT 항만·해운 뉴스 — 2026년 4월 23일 주간 브리핑</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 40px 20px;
+  }
+  .stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  /* ── 카드 기본 ── */
+  .card {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 80px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  /* 배경 이미지 */
+  .bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  /* 오버레이 */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* 브랜드 바 */
+  .brand-bar {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.18);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  /* 콘텐츠 레이어 */
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 카드 헤더 */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 56px;
+  }
+  .card-tag {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 6px 16px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .card-number {
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.65;
+    letter-spacing: 0.1em;
+  }
+
+  /* 카드 바디 */
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card-title {
+    font-size: 88px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+  .card-title.small { font-size: 72px; }
+  .card-title.xs    { font-size: 64px; }
+
+  .card-desc {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0.88;
+  }
+  .card-desc strong {
+    font-weight: 800;
+    color: #FFE066;
+  }
+
+  /* 빅 스탯 */
+  .big-stat {
+    font-size: 220px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .mega-50 {
+    font-size: 440px;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+  }
+  .stat-label {
+    font-size: 34px;
+    font-weight: 700;
+    opacity: 0.75;
+    margin-top: 8px;
+  }
+
+  /* 카드 푸터 */
+  .card-footer {
+    font-size: 22px;
+    opacity: 0.55;
+    letter-spacing: 0.05em;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    margin-top: auto;
+  }
+
+  /* 프리뷰 리스트 */
+  .preview-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .preview-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.4;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 16px;
+  }
+  .preview-list li:last-child { border-bottom: none; }
+  .preview-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: #FFE066;
+    min-width: 44px;
+  }
+
+  /* 비교 카드 테이블 */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .compare-table th {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.08);
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    text-align: left;
+    letter-spacing: 0.05em;
+    color: #FFE066;
+  }
+  .compare-table td {
+    font-size: 24px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.4;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .impact-badge {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .impact-red   { background: #E94E3B; }
+  .impact-amber { background: #E07B00; }
+  .impact-green { background: #2E9E6E; }
+  .impact-blue  { background: #1B73B3; }
+
+  /* 숫자 요약 카드 */
+  .stat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 12px;
+  }
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    border-bottom: 2px solid rgba(10,37,64,0.12);
+    padding-bottom: 20px;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-value {
+    font-size: 96px;
+    font-weight: 900;
+    color: #0A2540;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    min-width: 280px;
+  }
+  .stat-desc {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1F3D5A;
+    line-height: 1.4;
+  }
+
+  /* ── 카드별 배경색 ── */
+  .card-01 { background: linear-gradient(145deg, #0A2540, #0f2d4d); }
+  .card-02 { background: linear-gradient(145deg, #1B73B3, #2a8dd1); }
+  .card-03 { background: linear-gradient(145deg, #7a1e14, #E94E3B); }
+  .card-04 { background: linear-gradient(160deg, #1F6FA5 40%, #D9B382); }
+  .card-05 { background: linear-gradient(145deg, #1a4a36, #2E9E6E); }
+  .card-06 { background: linear-gradient(145deg, #0F4C81, #1a6bb0); }
+  .card-07 { background: linear-gradient(145deg, #0A2540, #00A0E9); }
+  .card-08 { background: #2B2B2B; }
+  .card-09 { background: #F5F1E8; color: #0A2540; }
+  .card-10 { background: linear-gradient(145deg, #0A2540, #0f2d4d); }
+
+  /* 카드 09 색상 오버라이드 */
+  .card-09 .brand-bar   { color: #0A2540; border-color: rgba(10,37,64,0.35); background: rgba(10,37,64,0.06); }
+  .card-09 .card-tag    { border-color: rgba(10,37,64,0.45); color: #0A2540; }
+  .card-09 .card-number { color: #0A2540; }
+  .card-09 .card-title  { color: #0A2540; }
+  .card-09 .card-footer { border-color: rgba(10,37,64,0.15); color: #0A2540; }
+
+  /* ── 반응형 (1120px 이하) ── */
+  @media (max-width: 1120px) {
+    .card {
+      width: 96vw;
+      height: 96vw;
+      padding: 7.4vw;
+      border-radius: 2.2vw;
+    }
+    .brand-bar      { font-size: 1.65vw; top: 2.9vw; padding: 0.75vw 1.85vw; }
+    .card-tag       { font-size: 1.85vw; padding: 0.55vw 1.48vw; }
+    .card-number    { font-size: 1.85vw; }
+    .card-title     { font-size: 8.15vw; margin-bottom: 2.96vw; }
+    .card-title.small { font-size: 6.67vw; }
+    .card-title.xs    { font-size: 5.93vw; }
+    .card-desc      { font-size: 2.78vw; }
+    .big-stat       { font-size: 20.37vw; }
+    .mega-50        { font-size: 40.74vw; }
+    .stat-label     { font-size: 3.15vw; }
+    .card-footer    { font-size: 2.04vw; padding-top: 1.85vw; }
+    .preview-list li { font-size: 2.96vw; gap: 1.48vw; padding-bottom: 1.48vw; }
+    .preview-num    { font-size: 2.59vw; min-width: 4.07vw; }
+    .card-header    { margin-top: 5.19vw; }
+    .compare-table th { font-size: 2.04vw; padding: 1.11vw 1.48vw; }
+    .compare-table td { font-size: 2.22vw; padding: 1.30vw 1.48vw; }
+    .impact-badge   { font-size: 1.67vw; padding: 0.37vw 0.93vw; }
+    .stat-value     { font-size: 8.89vw; min-width: 25.93vw; }
+    .stat-desc      { font-size: 2.59vw; }
+    .stat-row       { gap: 2.22vw; padding-bottom: 1.85vw; }
+    .stat-grid      { gap: 2.22vw; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- ══════════════════════════════════════
+       CARD 01 / 10 — INTRO
+  ══════════════════════════════════════ -->
+  <section class="card card-01">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Busan-port-from-Busan-tower-2.jpg" alt="부산항 전경" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(160deg,rgba(10,37,64,0.85) 0%,rgba(15,45,77,0.78) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">Weekly Brief</span>
+        <span class="card-number">01 / 10</span>
+      </div>
+      <div class="card-body" style="justify-content:flex-end; padding-bottom:48px;">
+        <p style="font-size:26px;font-weight:600;opacity:0.7;letter-spacing:0.15em;margin-bottom:24px;">2026년 4월 23일</p>
+        <h1 class="card-title small">해운·항만<br>주간 브리핑</h1>
+        <p class="card-desc">미·중 수수료 충돌 · 호르무즈 위기 · 공급과잉<br><strong>삼중 파고</strong>를 BPT가 짚어드립니다</p>
+      </div>
+      <div class="card-footer">BPT 항만·해운 뉴스 &nbsp;|&nbsp; 부산항터미널(주)</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 02 / 10 — PREVIEW
+  ══════════════════════════════════════ -->
+  <section class="card card-02">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Korea_busan_pusan_harbour_cargo_container_terminal.JPG" alt="부산항 컨테이너 터미널" loading="lazy">
+    <div class="overlay" style="background:rgba(27,115,179,0.82);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이번 주 5대 이슈</span>
+        <span class="card-number">02 / 10</span>
+      </div>
+      <div class="card-body">
+        <ul class="preview-list">
+          <li>
+            <span class="preview-num">①</span>
+            <span>미·중 항만 수수료 <strong>$80·RMB 640</strong> 4.17 동시 발효</span>
+          </li>
+          <li>
+            <span class="preview-num">②</span>
+            <span>호르무즈 위기 — 컨테이너선 <strong>140척</strong> 걸프 고립</span>
+          </li>
+          <li>
+            <span class="preview-num">③</span>
+            <span>신조선 1,000만 TEU — 운임 <strong>25%</strong> 하락 폭풍</span>
+          </li>
+          <li>
+            <span class="preview-num">④</span>
+            <span>광양항 <strong>5,940억</strong> 스마트항만 테스트베드 구축</span>
+          </li>
+          <li>
+            <span class="preview-num">⑤</span>
+            <span>전기 야드트랙터 전환 — 항만 <strong>무탄소화</strong> 본격화</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">BPT 항만·해운 뉴스 &nbsp;|&nbsp; 2026.04.23</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 03 / 10 — 이슈 ① 미·중 수수료
+  ══════════════════════════════════════ -->
+  <section class="card card-03">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/9/93/HMM_ALGECIRAS_%2849969576408%29.jpg" alt="HMM 컨테이너선" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(150deg,rgba(122,30,20,0.88) 0%,rgba(233,78,59,0.80) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이슈 ①</span>
+        <span class="card-number">03 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs">미·중 항만<br>수수료 전쟁<br>본격화</h2>
+        <p class="card-desc">
+          USTR, 중국 선박 순톤당 <strong>$80</strong> 부과 (4.17↑)<br>
+          중국 건조 컨테이너선 적하 <strong>1TEU당 $153</strong><br>
+          중국 맞불 — 미국 선박 <strong>RMB 640</strong>/순톤 대응<br>
+          한국 선사, 항차당 <strong>수억 원</strong> 추가 비용 직면
+        </p>
+      </div>
+      <div class="card-footer">출처: USTR 관보 2026.04.17 &nbsp;|&nbsp; 관세무역개발원</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 04 / 10 — 이슈 ② 호르무즈
+  ══════════════════════════════════════ -->
+  <section class="card card-04">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Evergreen_container_ship_in_Suez_Canal_%284171874814%29.jpg" alt="수에즈 운하 컨테이너선" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(160deg,rgba(31,111,165,0.84) 0%,rgba(217,179,130,0.75) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이슈 ②</span>
+        <span class="card-number">04 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs">호르무즈 봉쇄<br>쇼크</h2>
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:24px;">
+          <span class="big-stat" style="font-size:180px;">140</span>
+          <span style="font-size:52px;font-weight:700;opacity:0.9;">척</span>
+        </div>
+        <p class="card-desc">
+          걸프만 내 컨테이너선 고립 규모<br>
+          일일 물동량 2,000만 → <strong>380만 배럴</strong> 급락<br>
+          한국 원유 수입 <strong>95%</strong> 호르무즈 통과<br>
+          이란 4.17 일시 재개방 — 정상 운항 <strong>불확실</strong>
+        </p>
+      </div>
+      <div class="card-footer">출처: IEA · Maersk 성명 2026.04.08 · YTN 2026.04.21</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 05 / 10 — 이슈 ③ 공급과잉
+  ══════════════════════════════════════ -->
+  <section class="card card-05">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Busan_Port.JPG" alt="부산항" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(150deg,rgba(26,74,54,0.88) 0%,rgba(46,158,110,0.80) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이슈 ③</span>
+        <span class="card-number">05 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs">신조선 1,000만 TEU<br>운임 25% 하락<br>폭풍</h2>
+        <p class="card-desc">
+          2026년 신조선 인도량 <strong>1,000만 TEU</strong> — 역대 최고<br>
+          선복량 <strong>4.6%↑</strong> vs 물동량 <strong>2.4%↑</strong> — 수급 역전<br>
+          SCFI 예상 박스권 <strong>1,000~1,500</strong><br>
+          2019년 대비 선복 <strong>46%↑</strong> vs 수요 <strong>22%↑</strong>
+        </p>
+      </div>
+      <div class="card-footer">출처: 해양한국 2026 전망 · 쉬핑뉴스넷 · Drewry</div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       CARD 06 / 10 — 이슈 ④ 광양항 스마트항만
+  ══════════════════════════════════════ -->
+  <section class="card card-06">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/d/da/1190935_Gwangyang_Port_Terminal_in_South_Korea_2014.jpg" alt="광양항 터미널" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(150deg,rgba(15,76,129,0.88) 0%,rgba(26,107,176,0.80) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이슈 ④</span>
+        <span class="card-number">06 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs">광양항 스마트항만<br>테스트베드<br>2026 가동</h2>
+        <p class="card-desc">
+          <strong>5,940억 원</strong> 투입, 컨테이너 부두 4선석 자동화<br>
+          자동 C/C <strong>11대</strong> · AGV <strong>44대</strong> · ARMGC <strong>32대</strong><br>
+          부품 국산화율 <strong>90% 이상</strong> 달성<br>
+          2030년 진해 신항·인천 신항 본격 도입 로드맵
+        </p>
+      </div>
+      <div class="card-footer">출처: 해양수산부 · 데일리로그 · 여수광양항만공사</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 07 / 10 — 이슈 ⑤ 항만 무탄소화
+  ══════════════════════════════════════ -->
+  <section class="card card-07">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Busan-port-from-Busan-tower-2.jpg" alt="부산항 야경" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(150deg,rgba(10,37,64,0.88) 0%,rgba(0,160,233,0.78) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">이슈 ⑤</span>
+        <span class="card-number">07 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs">항만 무탄소화<br>가속 — 전기<br>야드트랙터 전환</h2>
+        <p class="card-desc">
+          경유·LNG 야드트랙터 → 국산 <strong>전기 장비</strong> 전환 지원<br>
+          부산항 신항 4부두 실증 완료 (2025.07~09)<br>
+          <strong>2030년</strong> 진해·인천 신항 스마트항만 연계<br>
+          EU CBAM·IMO 규제 강화 대응 <strong>필수 전환 과제</strong>
+        </p>
+      </div>
+      <div class="card-footer">출처: 경인방송 해양리포트 2026.04.20~21 · 해양수산부</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 08 / 10 — 비교 종합
+  ══════════════════════════════════════ -->
+  <section class="card card-08">
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">종합 비교</span>
+        <span class="card-number">08 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs" style="margin-bottom:24px;">5대 이슈<br>한눈에 비교</h2>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>이슈</th>
+              <th>핵심 수치</th>
+              <th>국내 영향</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>미·중 수수료 충돌</td>
+              <td>$80 / RMB 640</td>
+              <td>선사 비용↑ <span class="impact-badge impact-red">위험</span></td>
+            </tr>
+            <tr>
+              <td>호르무즈 위기</td>
+              <td>140척 고립</td>
+              <td>에너지·운임 불안 <span class="impact-badge impact-red">위험</span></td>
+            </tr>
+            <tr>
+              <td>컨테이너 공급과잉</td>
+              <td>운임 -25%</td>
+              <td>장기 약세 지속 <span class="impact-badge impact-amber">주의</span></td>
+            </tr>
+            <tr>
+              <td>광양항 테스트베드</td>
+              <td>5,940억 투입</td>
+              <td>자동화 기술 도약 <span class="impact-badge impact-green">기회</span></td>
+            </tr>
+            <tr>
+              <td>항만 무탄소화</td>
+              <td>국산화 90%↑</td>
+              <td>규제 대응·경쟁력 <span class="impact-badge impact-green">기회</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer" style="color:#fff;">BPT 항만·해운 뉴스 &nbsp;|&nbsp; 2026.04.23</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 09 / 10 — 숫자 요약
+  ══════════════════════════════════════ -->
+  <section class="card card-09">
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag" style="border-color:rgba(10,37,64,0.45);color:#0A2540;">핵심 숫자</span>
+        <span class="card-number" style="color:#0A2540;">09 / 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title xs" style="color:#0A2540;margin-bottom:20px;">이번 주<br>해운·항만 숫자 5</h2>
+        <div class="stat-grid">
+          <div class="stat-row">
+            <span class="stat-value">$80</span>
+            <span class="stat-desc">USTR 중국 선박 순톤당 수수료<br><small style="opacity:0.65;">(4월 17일 인상 시행)</small></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-value">140척</span>
+            <span class="stat-desc">호르무즈 걸프 고립 컨테이너선<br><small style="opacity:0.65;">(IEA 집계 기준)</small></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-value">-25%</span>
+            <span class="stat-desc">2026년 해운 운임 평균 하락 전망<br><small style="opacity:0.65;">(Drewry·Alphaliner)</small></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-value">5,940억</span>
+            <span class="stat-desc">광양항 스마트항만 테스트베드 투자액<br><small style="opacity:0.65;">(해양수산부)</small></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-value">90%+</span>
+            <span class="stat-desc">자동화 항만 장비 국산화율<br><small style="opacity:0.65;">(부산항 신항 4부두 실증)</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CARD 10 / 10 — OUTRO
+  ══════════════════════════════════════ -->
+  <section class="card card-10">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Busan-port-from-Busan-tower-2.jpg" alt="부산항 전경" loading="lazy">
+    <div class="overlay" style="background:linear-gradient(160deg,rgba(10,37,64,0.90) 0%,rgba(15,45,77,0.82) 100%);"></div>
+    <span class="brand-bar">BPT 항만,해운 뉴스</span>
+    <div class="content">
+      <div class="card-header">
+        <span class="card-tag">Outro</span>
+        <span class="card-number">10 / 10</span>
+      </div>
+      <div class="card-body" style="justify-content:flex-end; padding-bottom:48px;">
+        <h2 class="card-title small">BPT와 함께<br>항만의 미래를<br>봅니다</h2>
+        <p class="card-desc">
+          글로벌 해운·항만의 변화를 <strong>매주</strong> 전달합니다<br>
+          다음 주도 최신 뉴스로 찾아오겠습니다
+        </p>
+      </div>
+      <div class="card-footer">
+        부산항터미널(주) BPT &nbsp;|&nbsp; 스마트·친환경 항만을 선도합니다
+      </div>
+    </div>
+  </section>
+
+</div><!-- /stage -->
+</body>
+</html>
