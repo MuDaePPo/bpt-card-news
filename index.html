@@ -307,6 +307,42 @@
     .stat-row       { gap: 2.22vw; padding-bottom: 1.85vw; }
     .stat-grid      { gap: 2.22vw; }
   }
+
+  /* —— 텍스트 오버플로우 방지 안전망 —— */
+  .card { container-type: inline-size; }
+  .card .content {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .card-title,
+  .card-subtitle,
+  .card-body,
+  .card-footer,
+  .card-desc,
+  .big-stat,
+  .mega-50,
+  .preview-text,
+  .badge,
+  .compare-head,
+  .compare-body,
+  .summary-row .label {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+    hyphens: auto;
+  }
+  .card-title {
+    font-size: clamp(52px, 7.5cqw, 88px);
+    line-height: 1.18;
+  }
+  .card-title.small { font-size: clamp(44px, 6.2cqw, 72px); }
+  .card-title.xs    { font-size: clamp(38px, 5.5cqw, 64px); }
+  .card-subtitle    { font-size: clamp(22px, 2.9cqw, 34px); line-height: 1.5; }
+  .big-stat         { font-size: clamp(140px, 18cqw, 220px); line-height: 1; }
+  .mega-50          { font-size: clamp(260px, 34cqw, 440px); line-height: 0.9; }
+  .card-title    { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+  .card-subtitle { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+  .card-desc     { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -329,7 +365,7 @@
         <h1 class="card-title small">해운·항만<br>데일리 브리핑</h1>
         <p class="card-desc">미·중 수수료 · 호르무즈 위기 · HMM 선대 재편<br><strong>격동의 해운</strong>을 BPT가 짚어드립니다</p>
       </div>
-      <div class="card-footer">BPT 항만·해운 뉴스 &nbsp;|&nbsp; 부산항터미널(주)</div>
+      <div class="card-footer">BPT 해운·항만 뉴스 &nbsp;|&nbsp; 신선대감만터미널(주)</div>
     </div>
   </section>
 
@@ -361,7 +397,7 @@
           </li>
           <li>
             <span class="preview-num">④</span>
-            <span>광양항 <strong>5,940억</strong> 스마트항만 테스트베드 구축</span>
+            <span>국산 전기 야드트랙터 부산항 <strong>첫 투입</strong> — 부품 90% 국산화</span>
           </li>
           <li>
             <span class="preview-num">⑤</span>
@@ -454,10 +490,10 @@
 
 
   <!-- ══════════════════════════════════════
-       CARD 06 / 10 — 이슈 ④ 광양항 스마트항만
+       CARD 06 / 10 — 이슈 ④ 전기 야드트랙터
   ══════════════════════════════════════ -->
   <section class="card card-06">
-    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/d/da/1190935_Gwangyang_Port_Terminal_in_South_Korea_2014.jpg" alt="광양항 터미널" loading="lazy">
+    <img class="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Korea_busan_pusan_harbour_cargo_container_terminal.JPG" alt="부산항 컨테이너 야드" loading="lazy">
     <div class="overlay" style="background:linear-gradient(150deg,rgba(15,76,129,0.88) 0%,rgba(26,107,176,0.80) 100%);"></div>
     <span class="brand-bar">BPT 항만,해운 뉴스</span>
     <div class="content">
@@ -466,15 +502,15 @@
         <span class="card-number">06 / 10</span>
       </div>
       <div class="card-body">
-        <h2 class="card-title xs">광양항 스마트항만<br>테스트베드<br>2026 가동</h2>
+        <h2 class="card-title xs">국산 전기<br>야드트랙터<br>부산항 첫 투입</h2>
         <p class="card-desc">
-          <strong>5,940억 원</strong> 투입, 컨테이너 부두 4선석 자동화<br>
-          자동 C/C <strong>11대</strong> · AGV <strong>44대</strong> · ARMGC <strong>32대</strong><br>
-          부품 국산화율 <strong>90% 이상</strong> 달성<br>
-          2030년 진해 신항·인천 신항 본격 도입 로드맵
+          4월 15~16일, 북항·신항 3개소에 <strong>총 2대</strong> 실전 배치<br>
+          부품 국산화율 <strong>90% 이상</strong> — 공급망 리스크 최소화<br>
+          실시간 원격 모니터링 + 빅데이터 지능형 충전 탑재<br>
+          부산항 전체 야드트랙터 <strong>전기화</strong> 확대 예정
         </p>
       </div>
-      <div class="card-footer">출처: 해양수산부 · 데일리로그 · 여수광양항만공사</div>
+      <div class="card-footer">출처: 부산일보 2026.04.16 · 해양수산부 · 부산항만공사</div>
     </div>
   </section>
 
@@ -540,9 +576,9 @@
               <td>장기 약세 지속 <span class="impact-badge impact-amber">주의</span></td>
             </tr>
             <tr>
-              <td>광양항 테스트베드</td>
-              <td>5,940억 투입</td>
-              <td>자동화 기술 도약 <span class="impact-badge impact-green">기회</span></td>
+              <td>전기 야드트랙터</td>
+              <td>국산화 90%+</td>
+              <td>탄소 제로 전환 가속 <span class="impact-badge impact-green">기회</span></td>
             </tr>
             <tr>
               <td>HMM 선대 재편</td>
@@ -582,8 +618,8 @@
             <span class="stat-desc">2026년 해운 운임 평균 하락 전망<br><small style="opacity:0.65;">(Drewry·Alphaliner)</small></span>
           </div>
           <div class="stat-row">
-            <span class="stat-value">5,940억</span>
-            <span class="stat-desc">광양항 스마트항만 테스트베드 투자액<br><small style="opacity:0.65;">(해양수산부)</small></span>
+            <span class="stat-value">90%+</span>
+            <span class="stat-desc">부산항 전기 야드트랙터 부품 국산화율<br><small style="opacity:0.65;">(부산항만공사 · 해양수산부)</small></span>
           </div>
           <div class="stat-row">
             <span class="stat-value">24,000<small style="font-size:40px;font-weight:700;">TEU</small></span>
@@ -614,7 +650,7 @@
         </p>
       </div>
       <div class="card-footer">
-        부산항터미널(주) BPT &nbsp;|&nbsp; 스마트·친환경 항만을 선도합니다
+        신선대감만터미널(주) BPT &nbsp;|&nbsp; 스마트·친환경 항만을 선도합니다
       </div>
     </div>
   </section>
