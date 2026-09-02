@@ -952,5 +952,33 @@
     </ol>
   </div>
 </div><!-- /stage -->
+
+<!-- ══════ 카드 자동 맞춤 (bpt-autofit · 2026-09-02) ══════
+     카드는 1080×1080 overflow:hidden 이라 내용이 많으면 아래가 잘려 나간다.
+     생성 시 분량을 맞추는 게 최선이지만, 넘치더라도 잘리지 않도록
+     .content 를 비율만큼 축소해 카드 안에 담는다. 절대 삭제하지 말 것. -->
+<script>
+(function () {
+  "use strict";
+  var MIN = 0.68;            /* 이보다 작아지면 가독성이 무너지므로 하한 */
+  function fit() {
+    document.querySelectorAll(".card > .content").forEach(function (el) {
+      el.style.transform = ""; el.style.width = ""; el.style.height = "";
+      var r = el.scrollHeight / el.clientHeight;
+      if (!isFinite(r) || r <= 1.005) return;
+      var s = Math.max(MIN, 1 / r);
+      el.style.transformOrigin = "top left";
+      el.style.width  = (100 / s) + "%";
+      el.style.height = (100 / s) + "%";
+      el.style.transform = "scale(" + s.toFixed(4) + ")";
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fit);
+  else fit();
+  window.addEventListener("load", fit);          /* 폰트·이미지 로드 후 재계산 */
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
 </body>
 </html>
