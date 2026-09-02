@@ -343,6 +343,61 @@
   .card-title    { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
   .card-subtitle { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
   .card-desc     { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+  /* ══════ 원문 링크 · 상세 브리핑 (2026-09-02 추가) ══════
+     카드는 1080×1080 overflow:hidden 이라 본문을 늘리면 잘린다.
+     그래서 상세 내용과 원문 링크는 카드 '아래' 웹 전용 블록에 둔다.
+     (카드 이미지를 그대로 공유해도 규격이 깨지지 않음) */
+  .card-footer a.src-link {
+    color: inherit; text-decoration: underline; text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .card-footer a.src-link:hover { opacity: 1; }
+
+  .brief {
+    width: 1080px; max-width: 96vw;
+    background: #1a1d21; color: #dfe5ec;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px; padding: 30px 36px;
+    font-size: 17px; line-height: 1.75;
+  }
+  .brief .brief-tag {
+    display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .06em;
+    color: #0A2540; background: #FFE066; border-radius: 6px; padding: 3px 10px; margin-bottom: 12px;
+  }
+  .brief h3 { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.4; }
+  .brief .meta-row { font-size: 14.5px; color: #9fb0c4; margin-bottom: 14px; }
+  .brief ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0 0 18px; }
+  .brief ul li { padding-left: 16px; position: relative; }
+  .brief ul li::before { content: "·"; position: absolute; left: 4px; color: #FFE066; font-weight: 900; }
+  .brief .links { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; font-size: 15px; }
+  .brief .links b { color: #9fb0c4; font-weight: 700; margin-right: 8px; }
+  .brief .links a {
+    color: #7fc4ff; text-decoration: none; border-bottom: 1px dotted rgba(127,196,255,.5);
+    margin-right: 14px; display: inline-block; margin-top: 4px;
+  }
+  .brief .links a:hover { color: #b5deff; border-bottom-style: solid; }
+
+  .sources {
+    width: 1080px; max-width: 96vw;
+    background: #0A2540; color: #dbe6f2;
+    border-radius: 18px; padding: 34px 38px; font-size: 16px; line-height: 1.7;
+  }
+  .sources h3 { font-size: 22px; color: #fff; margin-bottom: 6px; }
+  .sources .sub { font-size: 14px; color: #8fa8c4; margin-bottom: 20px; }
+  .sources ol { padding-left: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .sources ol > li > strong { color: #FFE066; }
+  .sources .u { display: block; margin-top: 4px; }
+  .sources .u a { color: #7fc4ff; text-decoration: none; border-bottom: 1px dotted rgba(127,196,255,.5); font-size: 14.5px; }
+
+  @media (max-width: 1120px) {
+    .brief   { padding: 3vw 3.4vw; font-size: 1.6vw; border-radius: 1.6vw; }
+    .brief h3 { font-size: 2vw; }
+    .brief .links, .brief .meta-row { font-size: 1.4vw; }
+    .sources { padding: 3.2vw 3.6vw; font-size: 1.5vw; }
+    .sources h3 { font-size: 2.1vw; }
+  }
+
 </style>
 </head>
 <body>
@@ -439,9 +494,17 @@
           <p class="card-desc" style="margin-top:8px;">부산항, '기항지'에서 '모항' 체제로 전환<br><strong>체류형 크루즈</strong> 시장 본격 공략</p>
         </div>
       </div>
-      <div class="card-footer">출처: 헤럴드경제·부산일보 2026.09.02</div>
+      <div class="card-footer"><a class="src-link" href="https://biz.heraldcorp.com/article/10857266" target="_blank" rel="noopener">출처: 헤럴드경제·부산일보 2026.09.02 · 원문 보기 ↗</a></div>
     </div>
   </section>
+  <div class="brief">
+    <span class="brief-tag">이슈 1 상세</span>
+    <h3>부산항만공사, 유럽 럭셔리 크루즈사와 모항·오버나잇 확대 협약</h3>
+    <div class="meta-row">일시 2026년 8월 27~28일 방문·협약, 8월 31일 보도 · 주체 부산항만공사(BPA), 포낭(PONANT), 실버씨(Silversea) · 위치 프랑스 마르세유, 모나코 (선사 본사)</div>
+    <ul><li>BPA, 포낭·실버씨 본사 잇달아 방문해 부산항 모항·오버나잇(체류형) 크루즈 확대 업무협약 체결</li><li>포낭: 올해 첫 부산 모항 4항차 → 2027년 6항차 → 2028년 9항차로 확대, 2030년까지 올해 대비 3배 이상 항차 확대 계획</li><li>실버씨: 올해 부산 입항 11항차 → 2027년 26항차로 2배 이상 확대, 내년 신규 오버나잇 3항차 추진</li><li>부산항, 크루즈 '기항지'에서 '모항' 체제로 전환 가속</li></ul>
+    <div class="links"><b>원문</b><a href="https://biz.heraldcorp.com/article/10857266" target="_blank" rel="noopener">biz.heraldcorp.com ↗</a><a href="https://www.asiatoday.co.kr/kn/view.php?key=20260901010000230" target="_blank" rel="noopener">asiatoday.co.kr ↗</a><a href="https://www.busan.com/view/busan/view.php?code=2026083110512953903" target="_blank" rel="noopener">busan.com ↗</a></div>
+  </div>
+
 
   <!-- ══════════════════════════════════════
        CARD 04 / 10 — 이슈 ② 파나마 운하 통항 척수 감축
@@ -473,9 +536,17 @@
           <p class="card-desc" style="margin-top:8px;">아시아~미 동안 항로 지연·우회 우려<br><strong>공급망 변동성</strong> 재부상</p>
         </div>
       </div>
-      <div class="card-footer">출처: 매일신문·해사신문 2026.09.02</div>
+      <div class="card-footer"><a class="src-link" href="https://www.imaeil.com/page/view/2026082116363676253" target="_blank" rel="noopener">출처: 매일신문·해사신문 2026.09.02 · 원문 보기 ↗</a></div>
     </div>
   </section>
+  <div class="brief">
+    <span class="brief-tag">이슈 2 상세</span>
+    <h3>파나마 운하 통항 척수 단계적 감축 — 엘니뇨 가뭄</h3>
+    <div class="meta-row">일시 2026년 8월 21~22일 보도 / 시행은 9월 3일, 9월 15일 · 주체 파나마 운하청(ACP) · 배경 슈퍼 엘니뇨로 5~8월 유역 강우량 평년比 약 34% 감소, 가툰호 수위 저하</div>
+    <ul><li>9월 3~4일부터 하루 통항 척수 36척 → 34척 (네오파나막스 갑문 9슬롯, 파나막스 갑문 25슬롯)</li><li>9월 15일부터 32척으로 추가 감축 (파나막스 갑문 23슬롯)</li><li>흘수 제한(48.0피트) 조정도 병행 시행 중, 추가 조정은 10월로 연기</li><li>통항 능력 최대 약 11% 감소 — 아시아~미 동안 항로 우회·지연 우려</li></ul>
+    <div class="links"><b>원문</b><a href="https://www.imaeil.com/page/view/2026082116363676253" target="_blank" rel="noopener">imaeil.com ↗</a><a href="http://www.haesanews.com/news/articleView.html?idxno=150350" target="_blank" rel="noopener">haesanews.com ↗</a><a href="https://www.riotimesonline.com/panama-canal-transits-capped-el-nino-2026/" target="_blank" rel="noopener">riotimesonline.com ↗</a></div>
+  </div>
+
 
   <!-- ══════════════════════════════════════
        CARD 05 / 10 — 이슈 ③ Drewry 컨테이너 운임 하락 전환
@@ -507,9 +578,17 @@
           <p class="card-desc" style="margin-top:8px;">트랜스퍼시픽·아시아-유럽 동반 약세<br><strong>3주 연속 상승</strong> 이후 조정 국면</p>
         </div>
       </div>
-      <div class="card-footer">출처: Drewry·Maritime Gateway 2026.09.02</div>
+      <div class="card-footer"><a class="src-link" href="https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices/world-container-index-assessed-by-drewry" target="_blank" rel="noopener">출처: Drewry·Maritime Gateway 2026.09.02 · 원문 보기 ↗</a></div>
     </div>
   </section>
+  <div class="brief">
+    <span class="brief-tag">이슈 3 상세</span>
+    <h3>Drewry 세계 컨테이너 지수(WCI) 하락 전환 — $4,473/FEU</h3>
+    <div class="meta-row">일시 2026년 8월 27일 발표 (주간 지수) · 주체 Drewry · 배경 3주 연속 상승 후 조정 국면 진입</div>
+    <ul><li>WCI 종합지수: $4,473/40ft 컨테이너 (전주比 -1%)</li><li>상하이→뉴욕: $9,333 (-2%), 상하이→로스앤젤레스: $6,818 (보합)</li><li>상하이→제노바: $4,866 (-2%), 상하이→로테르담: $4,287 (-3%)</li><li>트랜스퍼시픽·아시아-유럽 항로 운임 동반 하락이 주요 원인</li></ul>
+    <div class="links"><b>원문</b><a href="https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices/world-container-index-assessed-by-drewry" target="_blank" rel="noopener">drewry.co.uk ↗</a><a href="https://www.maritimegateway.com/drewry-index-edges-lower-on-decline-in-trans-pacific-rates/" target="_blank" rel="noopener">maritimegateway.com ↗</a><a href="https://www.thedcn.com.au/news/world-container-index-27-august-2026" target="_blank" rel="noopener">thedcn.com.au ↗</a></div>
+  </div>
+
 
 
   <!-- ══════════════════════════════════════
@@ -542,9 +621,17 @@
           <p class="card-desc" style="margin-top:8px;">국산 장비 기반 '피지컬 AI' 항만<br><strong>국내 최초</strong> 완전자동화 실증 착수</p>
         </div>
       </div>
-      <div class="card-footer">출처: 헤럴드경제·해사신문 2026.09.02</div>
+      <div class="card-footer"><a class="src-link" href="https://biz.heraldcorp.com/article/10825939" target="_blank" rel="noopener">출처: 헤럴드경제·해사신문 2026.09.02 · 원문 보기 ↗</a></div>
     </div>
   </section>
+  <div class="brief">
+    <span class="brief-tag">이슈 4 상세</span>
+    <h3>광양항 완전자동화 항만 테스트베드 착공</h3>
+    <div class="meta-row">일시 2026년 7월 30일 착공식 · 주체 해양수산부, 여수광양항만공사 · 위치 전남 광양항 3-2단계 컨테이너부두</div>
+    <ul><li>2029년까지 총 7,724억원 투입, 4선석 규모 완전자동화 컨테이너터미널 구축</li><li>안벽크레인 8기·야드크레인 32기·무인이송장비(AGV) 44대·항만운영시스템(TOS) 1식 도입</li><li>목표 하역능력: 연간 136만TEU</li><li>국산 장비·시스템 기반 '피지컬 AI' 항만으로 차세대 스마트항만 실증 추진</li></ul>
+    <div class="links"><b>원문</b><a href="https://biz.heraldcorp.com/article/10825939" target="_blank" rel="noopener">biz.heraldcorp.com ↗</a><a href="http://www.haesanews.com/news/articleView.html?idxno=149732" target="_blank" rel="noopener">haesanews.com ↗</a><a href="https://www.aitimes.kr/news/articleView.html?idxno=41272" target="_blank" rel="noopener">aitimes.kr ↗</a></div>
+  </div>
+
 
   <!-- ══════════════════════════════════════
        CARD 07 / 10 — 이슈 ⑤ 함부르크 HHLA 5G 전용망
@@ -576,9 +663,17 @@
           <p class="card-desc" style="margin-top:8px;">완전자동화 터미널 CTA에 구축<br><strong>차세대 항만 기술</strong> 실증 테스트베드로 활용</p>
         </div>
       </div>
-      <div class="card-footer">출처: Container News·Port Technology 2026.09.02</div>
+      <div class="card-footer"><a class="src-link" href="https://container-news.com/hhla-activates-5g-network-at-container-terminal-altenwerder/" target="_blank" rel="noopener">출처: Container News·Port Technology 2026.09.02 · 원문 보기 ↗</a></div>
     </div>
   </section>
+  <div class="brief">
+    <span class="brief-tag">이슈 5 상세</span>
+    <h3>함부르크 HHLA 컨테이너터미널 5G 전용망 가동</h3>
+    <div class="meta-row">일시 2026년 7월 가동 완료 보도 (5월말부터 단계 구축) · 주체 HHLA(Hamburger Hafen und Logistik AG), 도이치텔레콤, 에릭슨 · 위치 독일 함부르크 컨테이너터미널 알텐베르더(CTA)</div>
+    <ul><li>'PROCON-5G' 프로젝트로 전용(캠퍼스) 5G망 가동, 공공망과 분리된 지역 할당 주파수 사용</li><li>커버리지 1㎢ 이상, 에릭슨 프라이빗 5G 캠퍼스 솔루션 기반</li><li>완전자동화 터미널의 차량·센서·모바일 기기·IT 시스템 실시간 연동 목적</li><li>향후 신규 항만 자동화 기술 실증을 위한 디지털 테스트베드로 활용 예정</li></ul>
+    <div class="links"><b>원문</b><a href="https://container-news.com/hhla-activates-5g-network-at-container-terminal-altenwerder/" target="_blank" rel="noopener">container-news.com ↗</a><a href="https://www.porttechnology.org/hhla-switches-on-5g-network-at-hamburg-terminal/" target="_blank" rel="noopener">porttechnology.org ↗</a><a href="https://www.worldcargonews.com/ports-terminals/2026/07/hhla-ericson-and-deutsche-telekom-complete-5g-project/" target="_blank" rel="noopener">worldcargonews.com ↗</a></div>
+  </div>
+
 
   <!-- ══════════════════════════════════════
        CARD 08 / 10 — 비교 종합 (오늘의 이슈 한눈에)
@@ -696,6 +791,12 @@
     </div>
   </section>
 
+
+  <div class="sources">
+    <h3>전체 출처 · 원문 링크</h3>
+    <div class="sub">카드에 인용한 수치와 사실은 아래 기사에서 확인할 수 있습니다.</div>
+    <ol><li><strong>부산항만공사, 유럽 럭셔리 크루즈사와 모항·오버나잇 확대 협약</strong><span class="u"><a href="https://biz.heraldcorp.com/article/10857266" target="_blank" rel="noopener">https://biz.heraldcorp.com/article/10857266</a></span><span class="u"><a href="https://www.asiatoday.co.kr/kn/view.php?key=20260901010000230" target="_blank" rel="noopener">https://www.asiatoday.co.kr/kn/view.php?key=20260901010000230</a></span><span class="u"><a href="https://www.busan.com/view/busan/view.php?code=2026083110512953903" target="_blank" rel="noopener">https://www.busan.com/view/busan/view.php?code=2026083110512953903</a></span><div style='color:#8fa8c4;font-size:14px;margin-top:4px'>헤럴드경제 · 아시아투데이 · 부산일보</div></li><li><strong>파나마 운하 통항 척수 단계적 감축 — 엘니뇨 가뭄</strong><span class="u"><a href="https://www.imaeil.com/page/view/2026082116363676253" target="_blank" rel="noopener">https://www.imaeil.com/page/view/2026082116363676253</a></span><span class="u"><a href="http://www.haesanews.com/news/articleView.html?idxno=150350" target="_blank" rel="noopener">http://www.haesanews.com/news/articleView.html?idxno=150350</a></span><span class="u"><a href="https://www.riotimesonline.com/panama-canal-transits-capped-el-nino-2026/" target="_blank" rel="noopener">https://www.riotimesonline.com/panama-canal-transits-capped-el-nino-2026/</a></span><div style='color:#8fa8c4;font-size:14px;margin-top:4px'>매일신문 · 해사신문 · The Rio Times</div></li><li><strong>Drewry 세계 컨테이너 지수(WCI) 하락 전환 — $4,473/FEU</strong><span class="u"><a href="https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices/world-container-index-assessed-by-drewry" target="_blank" rel="noopener">https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices/world-container-index-assessed-by-drewry</a></span><span class="u"><a href="https://www.maritimegateway.com/drewry-index-edges-lower-on-decline-in-trans-pacific-rates/" target="_blank" rel="noopener">https://www.maritimegateway.com/drewry-index-edges-lower-on-decline-in-trans-pacific-rates/</a></span><span class="u"><a href="https://www.thedcn.com.au/news/world-container-index-27-august-2026" target="_blank" rel="noopener">https://www.thedcn.com.au/news/world-container-index-27-august-2026</a></span><div style='color:#8fa8c4;font-size:14px;margin-top:4px'>Drewry · Maritime Gateway · The DCN (Australia)</div></li><li><strong>광양항 완전자동화 항만 테스트베드 착공</strong><span class="u"><a href="https://biz.heraldcorp.com/article/10825939" target="_blank" rel="noopener">https://biz.heraldcorp.com/article/10825939</a></span><span class="u"><a href="http://www.haesanews.com/news/articleView.html?idxno=149732" target="_blank" rel="noopener">http://www.haesanews.com/news/articleView.html?idxno=149732</a></span><span class="u"><a href="https://www.aitimes.kr/news/articleView.html?idxno=41272" target="_blank" rel="noopener">https://www.aitimes.kr/news/articleView.html?idxno=41272</a></span><div style='color:#8fa8c4;font-size:14px;margin-top:4px'>헤럴드경제 · 해사신문 · 인공지능신문</div></li><li><strong>함부르크 HHLA 컨테이너터미널 5G 전용망 가동</strong><span class="u"><a href="https://container-news.com/hhla-activates-5g-network-at-container-terminal-altenwerder/" target="_blank" rel="noopener">https://container-news.com/hhla-activates-5g-network-at-container-terminal-altenwerder/</a></span><span class="u"><a href="https://www.porttechnology.org/hhla-switches-on-5g-network-at-hamburg-terminal/" target="_blank" rel="noopener">https://www.porttechnology.org/hhla-switches-on-5g-network-at-hamburg-terminal/</a></span><span class="u"><a href="https://www.worldcargonews.com/ports-terminals/2026/07/hhla-ericson-and-deutsche-telekom-complete-5g-project/" target="_blank" rel="noopener">https://www.worldcargonews.com/ports-terminals/2026/07/hhla-ericson-and-deutsche-telekom-complete-5g-project/</a></span><div style='color:#8fa8c4;font-size:14px;margin-top:4px'>Container News · Port Technology International · WorldCargo News</div></li></ol>
+  </div>
 </div><!-- /stage -->
 </body>
 </html>
